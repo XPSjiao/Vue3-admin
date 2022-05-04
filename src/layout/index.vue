@@ -1,8 +1,10 @@
 <template>
   <div class="app-wrapper">
     <!-- 左侧 menu -->
-    <!-- 左侧 menu -->
-    <sidebar class="sidebar-container" :style="{ backgroundColor: variables.menuBg }" />
+    <sidebar
+      class="sidebar-container"
+      :style="{ backgroundColor: variables.menuBg }"
+    />
     <div class="main-container">
       <div class="fixed-header">
         <!-- 顶部的 navbar -->

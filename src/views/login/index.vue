@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="loginForm" :rules="loginRules" ref="loginFormRef">
+    <el-form
+      class="login-form"
+      ref="loginFormRef"
+      :model="loginForm"
+      :rules="loginRules"
+    >
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -9,20 +14,37 @@
         <span class="svg-container">
           <svg-icon icon="user" />
         </span>
-        <el-input placeholder="username" name="username" type="text" v-model="loginForm.username" />
+        <el-input
+          placeholder="username"
+          name="username"
+          type="text"
+          v-model="loginForm.username"
+        />
       </el-form-item>
 
       <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon="password" />
         </span>
-        <el-input placeholder="password" name="password" v-model="loginForm.password" :type="passwordType" />
+        <el-input
+          placeholder="password"
+          name="password"
+          :type="passwordType"
+          v-model="loginForm.password"
+        />
         <span class="show-pwd">
-          <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" @click="onChangePwdType" />
+          <svg-icon
+            :icon="passwordType === 'password' ? 'eye' : 'eye-open'"
+            @click="onChangePwdType"
+          />
         </span>
       </el-form-item>
 
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px" :loading="loading" @click="handleLogin"
+      <el-button
+        type="primary"
+        style="width: 100%; margin-bottom: 30px"
+        :loading="loading"
+        @click="handleLogin"
         >登录
       </el-button>
     </el-form>
@@ -34,6 +56,7 @@ import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+
 // 数据源
 const loginForm = ref({
   username: 'super-admin',
@@ -65,6 +88,7 @@ const onChangePwdType = () => {
     passwordType.value = 'password'
   }
 }
+
 // 登录动作处理
 const loading = ref(false)
 const loginFormRef = ref(null)
@@ -77,9 +101,8 @@ const handleLogin = () => {
     loading.value = true
     store
       .dispatch('user/login', loginForm.value)
-      .then(() => {
+      .then((data) => {
         loading.value = false
-        // TODO: 登录后操作
         router.push('/')
       })
       .catch((err) => {
@@ -110,14 +133,14 @@ $cursor: #fff;
     margin: 0 auto;
     overflow: hidden;
 
-    ::v-deep(.el-form-item) {
+    ::v-deep .el-form-item {
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(0, 0, 0, 0.1);
       border-radius: 5px;
       color: #454545;
     }
 
-    ::v-deep(.el-input) {
+    ::v-deep .el-input {
       display: inline-block;
       height: 47px;
       width: 85%;
