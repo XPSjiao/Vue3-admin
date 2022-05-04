@@ -8,8 +8,8 @@
 </template>
 
 <script setup>
+import SidebarMenu from './SidebarMenu.vue'
 import {} from 'vue'
-import SidebarMenu from './SidebarMenu'
 </script>
 
 <style lang="scss" scoped>
