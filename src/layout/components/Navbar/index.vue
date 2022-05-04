@@ -4,12 +4,7 @@
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <el-avatar
-            shape="square"
-            :size="40"
-            :src="$store.getters.userInfo.avatar"
-          >
-          </el-avatar>
+          <el-avatar shape="square" :size="40" :src="$store.getters.userInfo.avatar"> </el-avatar>
           <i class="el-icon-s-tools"></i>
         </div>
         <template #dropdown>
@@ -20,9 +15,7 @@
             <a target="_blank" href="">
               <el-dropdown-item>课程主页</el-dropdown-item>
             </a>
-            <el-dropdown-item divided @click="logout">
-              退出登录
-            </el-dropdown-item>
+            <el-dropdown-item divided @click="logout"> 退出登录 </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -34,7 +27,7 @@
 import {} from 'vue'
 
 import { useStore } from 'vuex'
-
+// 退出登录处理
 const store = useStore()
 const logout = () => {
   store.dispatch('user/logout')
