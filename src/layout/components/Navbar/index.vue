@@ -3,8 +3,9 @@
     <hamburger class="hamburger-container" />
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
-      <theme-picker class="right-menu-item hover-effect"></theme-picker>
+      <theme-picker class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
+      <screenfull class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -38,6 +39,7 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import LangSelect from '@/components/LangSelect'
 import ThemePicker from '@/components/ThemeSelect/index'
+import Screenfull from '@/components/Screenfull'
 
 // 退出登录处理
 const store = useStore()
