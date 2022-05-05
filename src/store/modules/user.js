@@ -2,7 +2,7 @@ import { login, getUserInfo } from '@/api/sys'
 import md5 from 'md5'
 import { setItem, getItem, removeAllItem } from '@/utils/storage'
 import router from '@/router'
-import { TOKEN } from '@/constant'
+import { TOKEN } from '@/constants'
 import { setTimeStamp } from '@/utils/auth'
 export default {
   namespaced: true,

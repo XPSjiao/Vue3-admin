@@ -1,5 +1,5 @@
 import { getItem, setItem } from '@/utils/storage'
-import { MAIN_COLOR, DEFAULT_COLOR } from '@/constant'
+import { MAIN_COLOR, DEFAULT_COLOR } from '@/constants'
 export default {
   namespaced: true,
   state: () => ({
