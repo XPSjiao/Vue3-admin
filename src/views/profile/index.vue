@@ -2,13 +2,13 @@
   <div class="my-container">
     <el-row>
       <el-col :span="6">
-        <project-card class="user-card" :features="featureData"></project-card>
+        <project-card class="user-card"></project-card>
       </el-col>
       <el-col :span="18">
         <el-card>
           <el-tabs v-model="activeName">
             <el-tab-pane :label="$t('msg.profile.feature')" name="feature">
-              <feature :features="featureData" />
+              <feature />
             </el-tab-pane>
             <el-tab-pane :label="$t('msg.profile.chapter')" name="chapter">
               <chapter />
@@ -29,19 +29,13 @@ import Chapter from './components/Chapter.vue'
 import Feature from './components/Feature.vue'
 import Author from './components/Author.vue'
 import { ref } from 'vue'
-
 import { getFeature } from '@/api/user'
-
 import { watchSwitchLang } from '@/utils/i18n'
 
 const featureData = ref([])
 const getFeatureData = async () => {
   featureData.value = await getFeature()
-  console.log(featureData.value)
 }
-getFeatureData()
-
-// 监听语言切换
 watchSwitchLang(getFeatureData)
 const activeName = ref('feature')
 </script>

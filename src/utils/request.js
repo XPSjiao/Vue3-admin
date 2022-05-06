@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+
 import store from '@/store'
+
 import { isCheckTimeout } from '@/utils/auth'
 
 const service = axios.create({
@@ -23,15 +25,6 @@ service.interceptors.response.use(
   },
   (error) => {
     // TODO: 将来处理 token 超时问题
-    // 处理 token 超时问题
-    if (
-      error.response &&
-      error.response.data &&
-      error.response.data.code === 401
-    ) {
-      // token超时
-      store.dispatch('user/logout')
-    }
     ElMessage.error(error.message) // 提示错误信息
     return Promise.reject(error)
   }
@@ -50,9 +43,21 @@ service.interceptors.request.use(
       // 如果token存在 注入token
       config.headers.Authorization = `Bearer ${store.getters.token}`
     }
+    // 配置接口国际化
+    config.headers['Accept-Language'] = store.getters.language
     return config // 必须返回配置
   },
   (error) => {
+    // 处理 token 超时问题
+    if (
+      error.response &&
+      error.response.data &&
+      error.response.data.code === 401
+    ) {
+      // token超时
+      store.dispatch('user/logout')
+    }
+    ElMessage.error(error.message) // 提示错误信息
     return Promise.reject(error)
   }
 )
