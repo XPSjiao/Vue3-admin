@@ -25,7 +25,6 @@ import { roleList } from '@/api/role'
 import { watchSwitchLang } from '@/utils/i18n'
 import { ref } from 'vue'
 import DistributePermission from './components/DistributePermission.vue'
-
 const allRoles = ref([])
 const getRoleList = async () => {
   allRoles.value = await roleList()
