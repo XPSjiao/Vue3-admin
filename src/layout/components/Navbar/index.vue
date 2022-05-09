@@ -42,13 +42,13 @@ import LangSelect from '@/components/LangSelect'
 import ThemePicker from '@/components/ThemeSelect/index'
 import Screenfull from '@/components/Screenfull'
 import HeaderSearch from '@/components/HeaderSearch'
-
+import { resetRouter } from '@/router'
 // 退出登录处理
 const store = useStore()
 const logout = () => {
+  resetRouter()
   store.dispatch('user/logout')
 }
-
 const route = useRoute()
 // 生成数组数据
 const breadcrumbData = ref([])
